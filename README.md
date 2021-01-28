@@ -4,7 +4,7 @@ This basic starter project is to help you display user profile information from 
 
 ## INSERT BLOG URL!!!!!!!!!!!
 
-You can read a quickstart for this sample which was previously written by Auth0 staff in ASP.NET Core 3.1 [here](https://auth0.com/docs/quickstart/webapp/aspnet-core/03-authorization). 
+You can read a quickstart for this sample which was previously written by Auth0 staff in ASP.NET Core 3.1 [here](https://auth0.com/docs/quickstart/webapp/aspnet-core-3/03-authorization). 
 
 Everything below is written by the staff at Auth0.
 
