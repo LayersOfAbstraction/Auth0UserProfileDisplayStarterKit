@@ -14,7 +14,7 @@ Everything below is written by the staff at Auth0.
 
 ## To run this project
 
-1. Ensure that you have replaced the appsettings.jsonSampleMvcApp file with the values for your Auth0 account.
+1. Ensure that you have replaced the appsettings. jsonSampleMvcApp file with the values for your Auth0 account.
 
 2. Run the application from the command line:
 
