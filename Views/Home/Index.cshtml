@@ -90,7 +90,6 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
     <script>
             $.fn.dataTable.ext.errMode = 'throw';
             var Auth0Table = $('#auth0UsersTable').DataTable({
