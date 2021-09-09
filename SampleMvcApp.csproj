@@ -1,6 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
   <PropertyGroup>
     <TargetFramework>netcoreapp5.0</TargetFramework>
+    <UserSecretsId>ce93db39-3533-4849-979f-c542e2d25501</UserSecretsId>
   </PropertyGroup>
  <ItemGroup>
     <PackageReference Include="Auth0.ManagementApi" Version="7.6.0" />
