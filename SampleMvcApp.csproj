@@ -4,6 +4,7 @@
     <UserSecretsId>ce93db39-3533-4849-979f-c542e2d25501</UserSecretsId>
   </PropertyGroup>
  <ItemGroup>
+    <PackageReference Include="Auth0.AuthenticationApi" Version="7.7.0" />
     <PackageReference Include="Auth0.ManagementApi" Version="7.6.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="5.0.2" />
   </ItemGroup>
