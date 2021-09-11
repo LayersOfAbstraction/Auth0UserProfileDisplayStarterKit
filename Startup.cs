@@ -11,6 +11,9 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 using SampleMvcApp.Support;
+using Auth0.ManagementApi;
+using Example.Auth0.AuthenticationApi.Services;
+using Example.Auth0.AuthenticationApi.AccessTokenManagement;
 
 namespace SampleMvcApp
 {
@@ -97,6 +100,11 @@ namespace SampleMvcApp
 
             // Add framework services.
             services.AddControllersWithViews();
+            // Add the Auth0 HttpClientManagementConnection.
+            services.AddSingleton<IManagementConnection, HttpClientManagementConnection>();
+            // Add JWT renewal references  
+            services.AddAccessTokenManagement(Configuration); 
+            services.AddTransient<IUserService, UserService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
