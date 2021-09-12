@@ -54,7 +54,7 @@ namespace Example.Auth0.AuthenticationApi.Services
 
             var token = await _clientAccessTokenManagementService.GetClientAccessTokenAsync(nameof(UserService), parameters, cancellationToken);
 
-            return new ManagementApiClient(token, new Uri(_configuration["Auth0:ManagementApi:BaseUri"]));
+            return new ManagementApiClient(token, new Uri(_configuration["Auth0:BaseUri"]));
         }
     }
 }
