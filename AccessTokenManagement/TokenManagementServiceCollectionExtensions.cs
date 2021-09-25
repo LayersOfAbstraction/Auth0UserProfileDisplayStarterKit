@@ -26,7 +26,7 @@ namespace Example.Auth0.AuthenticationApi.AccessTokenManagement
             services.Configure<AccessTokenManagementOptions>(configuration.GetSection(AccessTokenManagementOptions.Section));           
             services.TryAddTransient<IClientAccessTokenManagementService, ClientAccessTokenManagementService>();
             services.TryAddTransient<ITokenEndpointService, Auth0TokenEndpointService>();
-
+            services.AddDistributedMemoryCache();
             return new TokenManagementBuilder(services);
         }
     }
