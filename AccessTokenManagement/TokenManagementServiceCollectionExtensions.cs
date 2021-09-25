@@ -23,12 +23,8 @@ namespace Example.Auth0.AuthenticationApi.AccessTokenManagement
         public static TokenManagementBuilder AddAccessTokenManagement(this IServiceCollection services, IConfiguration configuration)
         {
             services.TryAddTransient<IClientAccessTokenCache, ClientAccessTokenCache>();
-            services.Configure<AccessTokenManagementOptions>(configuration.GetSection(AccessTokenManagementOptions.Section));
-
-            services.AddDistributedMemoryCache();
-            
+            services.Configure<AccessTokenManagementOptions>(configuration.GetSection(AccessTokenManagementOptions.Section));           
             services.TryAddTransient<IClientAccessTokenManagementService, ClientAccessTokenManagementService>();
-            services.TryAddTransient<IClientAccessTokenCache, ClientAccessTokenCache>();
             services.TryAddTransient<ITokenEndpointService, Auth0TokenEndpointService>();
 
             return new TokenManagementBuilder(services);
