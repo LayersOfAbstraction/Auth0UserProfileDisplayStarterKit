@@ -14,6 +14,8 @@ using SampleMvcApp.Support;
 using Auth0.ManagementApi;
 using Example.Auth0.AuthenticationApi.Services;
 using Example.Auth0.AuthenticationApi.AccessTokenManagement;
+using Microsoft.EntityFrameworkCore;
+using Auth0UserProfileDisplayStarterKit.Data;
 
 namespace SampleMvcApp
 {
@@ -31,6 +33,8 @@ namespace SampleMvcApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<TeamContext>(options =>
+            options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.ConfigureSameSiteNoneCookies();
 
             // Add authentication services
