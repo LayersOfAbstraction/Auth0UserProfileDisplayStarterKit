@@ -12,21 +12,27 @@ using Auth0.ManagementApi.Paging;
 using Example.Auth0.AuthenticationApi.Services;
 using System.Threading;
 using Auth0.ManagementApi.Models;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Auth0UserProfileDisplayStarterKit.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace SampleMvcApp.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly TeamContext _context;
         public IPagedList<Auth0.ManagementApi.Models.User> Users { get; private set; }
         private readonly IUserService _userService;
 
-        public HomeController(IUserService userService)
+        public HomeController(/*TeamContext context,*/ IUserService userService)
         {
+            // _context = context;
             _userService = userService;
         }
 
         public IActionResult Index()
         {
+            //ViewData["UserID"] = new SelectList(_context.Users, "ID", "UserFullname", null);
             return View();
         }
 
@@ -64,5 +70,19 @@ namespace SampleMvcApp.Controllers
         {
             Users = await _userService.GetUsersAsync(new GetUsersRequest(), new PaginationInfo(), cancellationToken);
         }
+
+        // POST: User/Create        
+        // [HttpPost]
+        // [ValidateAntiForgeryToken]
+        // public async Task<IActionResult> Index([Bind("UserLastName,UserFirstName,UserIsLeader,UserContactEmail,UserPhoneNumber,UserAddress,UserPostCode,UserCountry,UserMobileNumber,UserState,UserLogInName,UserPassword")] Auth0UserProfileDisplayStarterKit.ViewModels.User user)
+        // {
+        //         if (ModelState.IsValid)
+        //         {
+        //             _context.Add(user);
+        //             await _context.SaveChangesAsync();
+        //             return RedirectToAction(nameof(Index));
+        //         }
+        //     return View(user);
+        // }
     }
 }
