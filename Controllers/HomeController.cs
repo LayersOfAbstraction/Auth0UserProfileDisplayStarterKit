@@ -24,15 +24,15 @@ namespace SampleMvcApp.Controllers
         public IPagedList<Auth0.ManagementApi.Models.User> Users { get; private set; }
         private readonly IUserService _userService;
 
-        public HomeController(/*TeamContext context,*/ IUserService userService)
+        public HomeController(TeamContext context, IUserService userService)
         {
-            // _context = context;
+            _context = context;
             _userService = userService;
         }
 
         public IActionResult Index()
         {
-            //ViewData["UserID"] = new SelectList(_context.Users, "ID", "UserFullname", null);
+            ViewData["UserID"] = new SelectList(_context.Users, "ID", "UserFullname", null);
             return View();
         }
 
@@ -72,17 +72,17 @@ namespace SampleMvcApp.Controllers
         }
 
         // POST: User/Create        
-        // [HttpPost]
-        // [ValidateAntiForgeryToken]
-        // public async Task<IActionResult> Index([Bind("UserLastName,UserFirstName,UserIsLeader,UserContactEmail,UserPhoneNumber,UserAddress,UserPostCode,UserCountry,UserMobileNumber,UserState,UserLogInName,UserPassword")] Auth0UserProfileDisplayStarterKit.ViewModels.User user)
-        // {
-        //         if (ModelState.IsValid)
-        //         {
-        //             _context.Add(user);
-        //             await _context.SaveChangesAsync();
-        //             return RedirectToAction(nameof(Index));
-        //         }
-        //     return View(user);
-        // }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Index([Bind("UserLastName,UserFirstName,UserIsLeader,UserContactEmail,UserPhoneNumber,UserAddress,UserPostCode,UserCountry,UserMobileNumber,UserState,UserLogInName,UserPassword")] Auth0UserProfileDisplayStarterKit.ViewModels.User user)
+        {
+                if (ModelState.IsValid)
+                {
+                    _context.Add(user);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
+            return View(user);
+        }
     }
 }
