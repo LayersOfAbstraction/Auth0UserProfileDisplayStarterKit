@@ -36,7 +36,8 @@ namespace SampleMvcApp
             services.AddDbContext<TeamContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.ConfigureSameSiteNoneCookies();
-
+            
+            services.AddDatabaseDeveloperPageExceptionFilter();
             // Add authentication services
             services.AddAuthentication(options => {
                 options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
