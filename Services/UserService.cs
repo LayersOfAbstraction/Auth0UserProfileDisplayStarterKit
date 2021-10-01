@@ -2,6 +2,7 @@
 using System.Security.Authentication;
 using System.Threading;
 using System.Threading.Tasks;
+using Auth0.Core.Exceptions;
 using Auth0.ManagementApi;
 using Auth0.ManagementApi.Models;
 using Auth0.ManagementApi.Paging;
@@ -38,7 +39,7 @@ namespace Example.Auth0.AuthenticationApi.Services
             {
                 return await callFunc(apiClient);
             }
-            catch (AuthenticationException) // retry if 401
+            catch (ErrorApiException) // retry if 401
             {
                 apiClient = await GetApiClientAsync(forceRenewal: true, cancellationToken);
                 return await callFunc(apiClient);
