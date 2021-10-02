@@ -32,7 +32,6 @@ namespace SampleMvcApp.Controllers
 
         public IActionResult Index()
         {
-            ViewData["UserID"] = new SelectList(_context.Users, "ID", "UserFullname", null);
             return View();
         }
 
