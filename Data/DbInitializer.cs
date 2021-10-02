@@ -19,7 +19,7 @@ public static class DbInitializer
             {
             new User{UserFirstName="Carson",UserLastName="Alexander",UserContactEmail="jnash486+am15@gmail.com"},
             new User{UserFirstName="Arturo",UserLastName="Anand",UserContactEmail="jnash486+am15@gmail.com"},
-            new User{UserFirstName="Carson",UserLastName="Alexander",}
+            new User{UserFirstName="Carson",UserLastName="Alexander",UserContactEmail="jnash486+test1@gmail.com"}
             };
             foreach (User u in users)
             {
