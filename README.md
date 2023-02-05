@@ -1,45 +1,107 @@
-# Authorization
+# Quickstart Sample
 
-This basic starter project is to help you display user profile information from Auth0 into your ASP.NET 5 application. It can be used [alongside this blog](https://layersofabstraction.github.io/displaying-auth0-user-profiles-in-ASP.NET-Core-MVC-part1.html) if you want to follow along. 
+This example shows how to add login/logout and extract user profile information from claims.
 
-You can read a quickstart for this sample which was previously written by Auth0 staff in ASP.NET Core 3.1 [here](https://auth0.com/docs/quickstart/webapp/aspnet-core-3/03-authorization). 
-
-Everything below is written by the staff at Auth0.
+You can read a quickstart for this sample [here](https://auth0.com/docs/quickstart/webapp/aspnet-core).
 
 ## Requirements
 
-* .[NET Core 5.0 SDK](https://www.microsoft.com/net/download/core)
+- [.NET SDK](https://dotnet.microsoft.com/download) (.NET Core 3.1 or .NET 5.0+)
 
 ## To run this project
 
-1. Ensure that you have replaced the appsettings. jsonSampleMvcApp file with the values for your Auth0 account.
+1. Ensure that you have replaced the `appsettings.json` file with the values for your Auth0 account.
 
 2. Run the application from the command line:
 
-    ```bash
-    dotnet run
-    ```
+```bash
+dotnet run
+```
 
 3. Go to `http://localhost:3000` in your web browser to view the website.
 
-## To run this project with docker
+## Run this project with Docker
 
-In order to run the example with docker you need to have **Docker** installed.
+In order to run the example with Docker you need to have [Docker](https://docker.com/products/docker-desktop) installed.
 
-Execute in command line `sh exec.sh` to run the Docker in Linux or macOS, or `.\exec.ps1` to run the Docker in Windows.
+To build the Docker image and run the project inside a container, run the following command in a terminal, depending on your operating system:
 
+```
+# Mac
+sh exec.sh
+
+# Windows (using Powershell)
+.\exec.ps1
+```
 
 ## Important Snippets
 
-### 1. Specify the Roles who can access a particular action
+### 1. Register the Auth0 SDK
 
 ```csharp
-// /Controllers/HomeController.cs
-
-[Authorize(Roles = "admin")]
-public IActionResult Admin()
+public void ConfigureServices(IServiceCollection services)
 {
-    return View();
+    services.AddAuth0WebAppAuthentication(options => {
+        options.Domain = Configuration["Auth0:Domain"];
+        options.ClientId = Configuration["Auth0:ClientId"];
+    });
 }
 ```
 
+### 2. Register the Authentication middleware
+
+```csharp
+public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+{
+    ...
+    app.UseAuthentication();
+    app.UseAuthorization();
+    ...
+}
+```
+### 3. Login
+
+```csharp
+public async Task Login(string returnUrl = "/")
+{
+    var authenticationProperties = new LoginAuthenticationPropertiesBuilder()
+        .WithRedirectUri(returnUrl)
+        .Build();
+
+    await HttpContext.ChallengeAsync(Auth0Constants.AuthenticationScheme, authenticationProperties);
+}
+
+```
+
+### 4. User Profile
+
+```csharp
+[Authorize]
+public IActionResult Profile()
+{
+    return View(new UserProfileViewModel()
+    {
+        Name = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Name)?.Value,
+        EmailAddress = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value,
+        ProfileImage = User.Claims.FirstOrDefault(c => c.Type == "picture")?.Value
+    });
+}
+```
+
+### 5. Logout
+
+```csharp
+[Authorize]
+public async Task Logout()
+{
+    var authenticationProperties = new LogoutAuthenticationPropertiesBuilder()
+        // Indicate here where Auth0 should redirect the user after a logout.
+        // Note that the resulting absolute Uri must be whitelisted in the
+        // **Allowed Logout URLs** settings for the client.
+        .WithRedirectUri(Url.Action("Index", "Home"))
+        .Build();
+        
+    await HttpContext.SignOutAsync(Auth0Constants.AuthenticationScheme, authenticationProperties);
+    await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+}
+```
