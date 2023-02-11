@@ -3,10 +3,10 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using SampleMvcApp.Support;
+using Auth0UserProfileDisplayStarterKit.Support;
 using Auth0.AspNetCore.Authentication;
 
-namespace SampleMvcApp
+namespace Auth0UserProfileDisplayStarterKit
 {
     public class Startup
     {

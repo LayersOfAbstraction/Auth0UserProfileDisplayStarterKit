@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace SampleMvcApp.Controllers
+namespace Auth0UserProfileDisplayStarterKit.Controllers
 {
     public class HomeController : Controller
     {
