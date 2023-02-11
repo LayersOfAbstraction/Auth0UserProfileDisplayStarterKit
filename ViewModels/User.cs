@@ -1,4 +1,4 @@
-﻿namespace Auth0UserProfileDisplayStarterKit.Models
+﻿namespace Auth0UserProfileDisplayStarterKit.ViewModels
 {
     public class User
     {
