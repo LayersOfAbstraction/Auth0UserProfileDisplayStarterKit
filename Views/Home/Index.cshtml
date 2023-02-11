@@ -1,4 +1,5 @@
-﻿@{
+﻿@model Auth0UserProfileDisplayStarterKit.ViewModels.User
+@{
     ViewData["Title"] = "Home Page";
 }
 
@@ -8,3 +9,140 @@
         <p>To follow along in building this sample please <a href="https://auth0.com/docs/quickstart/webapp/aspnet-core">refer to the Quickstart</a>.
     </div>
 </div>
+
+<h1>Auth0 Users</h1>
+<p>Please select Auth0 user from table and enter any additional information into database.</p>
+<table id="auth0UsersTable" style="width: 200px;">
+    <thead>
+        <tr>
+            <th>
+                First name
+            </th>
+            <th>
+                Last name
+            </th>
+            <th>
+                Email
+            </th>
+            <th>
+            </th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+<h4>Create New User</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="UserFirstName" class="control-label"></label>
+                <input id="UFirstNameInput" readonly asp-for="UserFirstName" class="form-control" />
+                <span asp-validation-for="UserFirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserLastName" class="control-label"></label>
+                <input id="ULastNameInput" readonly asp-for="UserLastName" class="form-control" />
+                <span asp-validation-for="UserLastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserContactEmail" class="control-label"></label>
+                <input id="UEmailInput" readonly asp-for="UserContactEmail" class="form-control" />
+                <span asp-validation-for="UserContactEmail" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserPhoneNumber" class="control-label"></label>
+                <input asp-for="UserPhoneNumber" class="form-control" />
+                <span asp-validation-for="UserPhoneNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserAddress" class="control-label"></label>
+                <input asp-for="UserAddress" class="form-control" />
+                <span asp-validation-for="UserAddress" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserPostCode" class="control-label"></label>
+                <input asp-for="UserPostCode" class="form-control" />
+                <span asp-validation-for="UserPostCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserCountry" class="control-label"></label>
+                <input asp-for="UserCountry" class="form-control" />
+                <span asp-validation-for="UserCountry" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserMobileNumber" class="control-label"></label>
+                <input asp-for="UserMobileNumber" class="form-control" />
+                <span asp-validation-for="UserMobileNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserState" class="control-label"></label>
+                <input asp-for="UserState" class="form-control" />
+                <span asp-validation-for="UserState" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $.fn.dataTable.ext.errMode = 'throw';
+        var Auth0Table = $('#auth0UsersTable').DataTable({
+            "ajax": {
+                'type': 'get',
+                'dataType': "json",
+                "url": "@Url.Action("GetAllAuth0Users")",
+                "dataSrc": function (result) {
+                    return result;
+                }
+            },
+            "columns": [
+                { "data": "userFirstName" },
+                { "data": "userLastName" },
+                { "data": "userContactEmail" }
+            ]
+        });
+
+
+        $('#auth0UsersTable').on('click', 'tbody tr', function DisplaySelectedRowItems() {
+            //IF table row you click on is already selected.
+            if ($(this).hasClass('selected')) {
+                //deselect the row you already selected.
+                $(this).removeClass('selected');
+            }
+            else {
+                //Search all visible rows and deselect them.
+                Auth0Table.$('tr.selected').removeClass('selected');
+                //Select new row you clicked.
+                $(this).addClass('selected');
+
+                //Get ID of table and some property.
+                var table = document.querySelector('#auth0UsersTable');
+                var firstName = document.querySelector('#UFirstNameInput');
+                var lastName = document.querySelector('#ULastNameInput');
+                var email = document.querySelector('#UEmailInput');
+
+                //Add listener for table click event.
+                table.addEventListener('click', onTableClick);
+
+                //Get click of Table.
+                function onTableClick(e) {
+                    var tr = e.target.parentElement;
+                    var data = [];
+
+                    for (var td of tr.children) {
+                        data.push(td.innerHTML);
+                    }
+
+                    firstName.value = data[0];
+                    lastName.value = data[1];
+                    email.value = data[2];
+                }
+            }
+        });
+    </script>
+}
