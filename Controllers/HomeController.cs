@@ -20,7 +20,7 @@ namespace Auth0UserProfileDisplayStarterKit.Controllers
         {
             //Get token
             var apiClient = new ManagementApiClient(ConstantStrings.strToken,
-                new Uri("{DOMAIN}"));
+                new Uri("https://dev-dgdfgfdgf324.au.auth0.com/api/v2/"));
             //Get Auth0 Users
             var allUsers = await apiClient.Users.GetAllAsync(new Auth0.ManagementApi.Models.GetUsersRequest(), new Auth0.ManagementApi.Paging.PaginationInfo());
             var renderedUsers = allUsers.Select(u => new Auth0UserProfileDisplayStarterKit.ViewModels.User
