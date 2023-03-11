@@ -5,5 +5,7 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Auth0.AspNetCore.Authentication" Version="1.1.0" />
+    <PackageReference Include="Auth0.AuthenticationApi" Version="7.18.0" />
+    <PackageReference Include="Auth0.ManagementApi" Version="7.18.0" />
   </ItemGroup>
 </Project>
