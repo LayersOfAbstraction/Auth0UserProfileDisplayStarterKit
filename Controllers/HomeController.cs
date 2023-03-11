@@ -14,7 +14,6 @@ using System.Threading;
 using Auth0.ManagementApi.Models;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Auth0UserProfileDisplayStarterKit.Data;
-using Microsoft.EntityFrameworkCore;
 
 namespace SampleMvcApp.Controllers
 {
