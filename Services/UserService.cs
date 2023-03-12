@@ -9,8 +9,9 @@ using Example.Auth0.AuthenticationApi.AccessTokenManagement;
 using Example.Auth0.AuthenticationApi.AccessTokenManagement.Interfaces;
 using Microsoft.Extensions.Configuration;
 
-namespace Example.Auth0.AuthenticationApi.Services
-{
+//The namespace is different to the rest of the project
+//and stops the ManagementApi from been recognized.
+//It has been deleted.
     public class UserService : IUserService
     {
         private readonly IConfiguration _configuration;
@@ -23,7 +24,9 @@ namespace Example.Auth0.AuthenticationApi.Services
             _clientAccessTokenManagementService = clientAccessTokenManagementService;
         }
 
-        public async Task<IPagedList<User>> GetUsersAsync(GetUsersRequest request,
+        //Prepending Auth0.ManagementApi.Models to User prevents confusion
+        //for .NET 6 to know if we want to list Auth0 users or our own view model users.
+        public async Task<IPagedList<Auth0.ManagementApi.Models.User>> GetUsersAsync(GetUsersRequest request,
             PaginationInfo paginationInfo, CancellationToken cancellationToken)
         {
             return await MakeCallAsync(async apiClient => await apiClient.Users.GetAllAsync(request, paginationInfo),
@@ -57,4 +60,3 @@ namespace Example.Auth0.AuthenticationApi.Services
             return new ManagementApiClient(token, new Uri(_configuration["Auth0:ManagementApi:BaseUri"]));
         }
     }
-}
