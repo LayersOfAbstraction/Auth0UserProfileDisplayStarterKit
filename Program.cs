@@ -1,12 +1,10 @@
 ﻿using Auth0.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-
-using Microsoft.IdentityModel.Logging;
 using Auth0UserProfileDisplayStarterKit.Support;
+using Example.Auth0.AuthenticationApi.AccessTokenManagement;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,6 +18,13 @@ builder.Services.AddAuth0WebAppAuthentication(options =>
 
 // Configure the HTTP request pipeline.
 builder.Services.ConfigureSameSiteNoneCookies();
+
+// Add the Auth0 HttpClientManagementConnection.
+builder.Services.AddSingleton<IManagementConnection, HttpClientManagementConnection>();
+// Add JWT renewal references  
+builder.Services.AddAccessTokenManagement(builder.Configuration);
+builder.Services.AddTransient<IUserService, UserService>();
+
 var app = builder.Build();
 
 if (!app.Environment.IsDevelopment())
