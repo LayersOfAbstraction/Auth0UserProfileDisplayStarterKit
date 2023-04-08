@@ -31,7 +31,7 @@ namespace Example.Auth0.AuthenticationApi.AccessTokenManagement
             _clientAccessTokenCache = clientAccessTokenCache;
         }
 
-        /// <inheritdoc/>
+        ///<inheritdoc/>
         public async Task<string> GetClientAccessTokenAsync(string clientName, ClientAccessTokenParameters parameters, CancellationToken cancellationToken)
         {
             if (parameters.ForceRenewal == false)
