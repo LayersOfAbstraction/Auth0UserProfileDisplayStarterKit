@@ -41,7 +41,7 @@ using Microsoft.Extensions.Configuration;
             {
                 return await callFunc(apiClient);
             }
-            catch (AuthenticationException) // retry if 401
+            catch (ErrorApiException) // retry if 401
             {
                 apiClient = await GetApiClientAsync(forceRenewal: true, cancellationToken);
                 return await callFunc(apiClient);
