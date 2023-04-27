@@ -6,3 +6,5 @@ global using Auth0.ManagementApi.Paging;
 global using System.Threading;
 global using Auth0.ManagementApi.Models;
 global using Auth0.Core.Exceptions;
+global using Auth0UserProfileDisplayStarterKit.Data;
+global using Microsoft.EntityFrameworkCore;
