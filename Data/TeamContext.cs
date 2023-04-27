@@ -1,7 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Auth0UserProfileDisplayStarterKit.ViewModels;
-using Microsoft.EntityFrameworkCore;
-
 namespace Auth0UserProfileDisplayStarterKit.Data
 {
     public class TeamContext : DbContext
