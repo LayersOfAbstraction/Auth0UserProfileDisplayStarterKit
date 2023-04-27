@@ -1,7 +1,7 @@
 ﻿using System;
 
 namespace Auth0UserProfileDisplayStarterKit.ViewModels
-{
+{ 
     internal partial class AccessTokenCache
     {
         public string Id { get; set; }
@@ -10,5 +10,6 @@ namespace Auth0UserProfileDisplayStarterKit.ViewModels
         public long? SlidingExpirationInSeconds { get; set; }
         public DateTimeOffset? AbsoluteExpiration { get; set; }
     }
+}
 
 }
