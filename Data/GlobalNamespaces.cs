@@ -5,3 +5,4 @@ global using Auth0UserProfileDisplayStarterKit.ViewModels;
 global using Auth0.ManagementApi.Paging;
 global using System.Threading;
 global using Auth0.ManagementApi.Models;
+global using Auth0.Core.Exceptions;
