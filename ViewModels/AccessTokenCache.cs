@@ -12,4 +12,3 @@ namespace Auth0UserProfileDisplayStarterKit.ViewModels
     }
 }
 
-}
