@@ -5,8 +5,12 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Auth0UserProfileDisplayStarterKit.Support;
 using Example.Auth0.AuthenticationApi.AccessTokenManagement;
+using Microsoft.Extensions.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDbContext<TeamContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 //To use MVC we have to explicitly declare we are using it. Doing so will prevent a System.InvalidOperationException.
 builder.Services.AddControllersWithViews();
