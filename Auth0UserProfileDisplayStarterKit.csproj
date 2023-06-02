@@ -2,8 +2,6 @@
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
   <DisableImplicitNamespaceGrouping>true</DisableImplicitNamespaceGrouping>
-  <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
-  <DockerfileContext>.</DockerfileContext>
   </PropertyGroup>        
   <ItemGroup>
     <PackageReference Include="Auth0.AspNetCore.Authentication" Version="1.1.0" />
@@ -17,6 +15,7 @@
     </PackageReference>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="6.0.4" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.4" />
+    <PackageReference Include="Microsoft.Extensions.Caching.SqlServer" Version="6.0.4" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.17.2" />
   </ItemGroup>
 </Project>
