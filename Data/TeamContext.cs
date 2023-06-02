@@ -14,7 +14,6 @@ namespace Auth0UserProfileDisplayStarterKit.Data
         {
             //It is optional to create the user table.
             modelBuilder.Entity<ViewModels.User>().ToTable("tblUser");
-            modelBuilder.ApplyConfigurationsFromAssembly(typeof(AccessTokenCacheConfiguration).Assembly);
         }
     }
 }
