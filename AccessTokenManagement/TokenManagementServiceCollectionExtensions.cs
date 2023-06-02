@@ -25,8 +25,13 @@ namespace Example.Auth0.AuthenticationApi.AccessTokenManagement
             services.TryAddTransient<IClientAccessTokenCache, ClientAccessTokenCache>();
             services.Configure<AccessTokenManagementOptions>(configuration.GetSection(AccessTokenManagementOptions.Section));
 
-            services.AddDistributedMemoryCache();
-            
+            services.AddDistributedSqlServerCache(options =>
+            {
+                options.ConnectionString = configuration.GetConnectionString("DefaultConnection");
+                options.SchemaName = "security";
+                options.TableName = "tblAccessTokenCache";
+            });
+
             services.TryAddTransient<IClientAccessTokenManagementService, ClientAccessTokenManagementService>();
             services.TryAddTransient<IClientAccessTokenCache, ClientAccessTokenCache>();
             services.TryAddTransient<ITokenEndpointService, Auth0TokenEndpointService>();
