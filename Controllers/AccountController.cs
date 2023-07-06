@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
-using Auth0UserProfileDisplayStarterKit.ViewModels;
+using Auth0UserProfileDisplayStarterKit.Models;
 using System.Linq;
 using System.Security.Claims;
 using Auth0.AspNetCore.Authentication;

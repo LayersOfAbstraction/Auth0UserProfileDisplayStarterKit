@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Auth0UserProfileDisplayStarterKit.ViewModels
+namespace Auth0UserProfileDisplayStarterKit.Models
 { 
     internal partial class AccessTokenCache
     {

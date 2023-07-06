@@ -1,4 +1,4 @@
-﻿namespace Auth0UserProfileDisplayStarterKit.ViewModels
+﻿namespace Auth0UserProfileDisplayStarterKit.Models
 {
     public class Auth0Token
     {
