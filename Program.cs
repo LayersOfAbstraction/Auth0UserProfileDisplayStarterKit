@@ -6,9 +6,9 @@ using Microsoft.Extensions.Hosting;
 using Auth0UserProfileDisplayStarterKit.Support;
 using Example.Auth0.AuthenticationApi.AccessTokenManagement;
 using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Logging;
 
 var builder = WebApplication.CreateBuilder(args);
-
 builder.Services.AddDbContext<TeamContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddDistributedSqlServerCache(options =>
