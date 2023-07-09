@@ -27,22 +27,6 @@ namespace Auth0UserProfileDisplayStarterKit.Controllers
             return View();
         }
 
-        // POST: User/Create        
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Index([Bind("UserLastName,UserFirstName,UserIsLeader,UserContactEmail," +
-            "UserPhoneNumber,UserAddress,UserPostCode,UserCountry,UserMobileNumber,UserState,UserLogInName," +
-            "UserPassword")] Auth0UserProfileDisplayStarterKit.Models.User user)
-        {
-            if (ModelState.IsValid)
-            {
-                _context.Add(user);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(user);
-        }
-
         public IActionResult Error()
         {
             return View();
