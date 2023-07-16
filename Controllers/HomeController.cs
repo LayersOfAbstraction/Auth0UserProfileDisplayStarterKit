@@ -16,32 +16,31 @@ namespace Auth0UserProfileDisplayStarterKit.Controllers
 
         //Add the context to the constructor. Don't make another constructor. Use the one
         //that is already there.
-        public HomeController(TeamContext context, IUserService userService)
+        public HomeController(/*TeamContext context,*/ IUserService userService)
         {
-            _context = context;
+            //_context = context;
             _userService = userService;
         }
 
         public IActionResult Index()
         {
+            //ViewData["UserID"] = new SelectList(_context.Users, "ID", "UserFullname", null);
             return View();
         }
 
         // POST: User/Create        
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Index([Bind("UserLastName,UserFirstName,UserIsLeader,UserContactEmail," +
-            "UserPhoneNumber,UserAddress,UserPostCode,UserCountry,UserMobileNumber,UserState,UserLogInName," +
-            "UserPassword")] Auth0UserProfileDisplayStarterKit.Models.User user)
-        {
-            if (ModelState.IsValid)
-            {
-                _context.Add(user);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(user);
-        }
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public async Task<IActionResult> Index([Bind("UserLastName,UserFirstName,UserIsLeader,UserContactEmail,UserPhoneNumber,UserAddress,UserPostCode,UserCountry,UserMobileNumber,UserState,UserLogInName,UserPassword")] Auth0UserProfileDisplayStarterKit.ViewModels.User user)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        _context.Add(user);
+        //        await _context.SaveChangesAsync();
+        //        return RedirectToAction(nameof(Index));
+        //    }
+        //    return View(user);
+        //}
 
         public IActionResult Error()
         {

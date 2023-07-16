@@ -2,6 +2,7 @@
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
   <DisableImplicitNamespaceGrouping>true</DisableImplicitNamespaceGrouping>
+    <UserSecretsId>3c2e5d93-be55-42f4-99a6-dc1dfed336c5</UserSecretsId>
   </PropertyGroup>        
   <ItemGroup>
     <PackageReference Include="Auth0.AspNetCore.Authentication" Version="1.1.0" />
