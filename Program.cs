@@ -9,26 +9,14 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Logging;
 
 var builder = WebApplication.CreateBuilder(args);
-<<<<<<< Updated upstream
-builder.Services.AddDbContext<TeamContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-builder.Services.AddDistributedSqlServerCache(options =>
-{
-    options.ConnectionString = builder.Configuration.GetConnectionString("CacheConnectionString");
-    options.SchemaName = "dbo";
-    options.TableName = "CacheTable";
-});
-=======
-
 //builder.Services.AddDbContext<TeamContext>(options =>
-//options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+//    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 //builder.Services.AddDistributedSqlServerCache(options =>
 //{
 //    options.ConnectionString = builder.Configuration.GetConnectionString("CacheConnectionString");
 //    options.SchemaName = "dbo";
 //    options.TableName = "CacheTable";
 //});
->>>>>>> Stashed changes
 
 
 //To use MVC we have to explicitly declare we are using it. Doing so will prevent a System.InvalidOperationException.

@@ -12,35 +12,17 @@ namespace Auth0UserProfileDisplayStarterKit.Controllers
         public IPagedList<Auth0.ManagementApi.Models.User> Users { get; private set; }
         private readonly IUserService _userService;
 
-        private readonly TeamContext _context;
-
         //Add the context to the constructor. Don't make another constructor. Use the one
         //that is already there.
-        public HomeController(/*TeamContext context,*/ IUserService userService)
+        public HomeController(IUserService userService)
         {
-            //_context = context;
             _userService = userService;
         }
 
         public IActionResult Index()
         {
-            //ViewData["UserID"] = new SelectList(_context.Users, "ID", "UserFullname", null);
             return View();
         }
-
-        // POST: User/Create        
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> Index([Bind("UserLastName,UserFirstName,UserIsLeader,UserContactEmail,UserPhoneNumber,UserAddress,UserPostCode,UserCountry,UserMobileNumber,UserState,UserLogInName,UserPassword")] Auth0UserProfileDisplayStarterKit.ViewModels.User user)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        _context.Add(user);
-        //        await _context.SaveChangesAsync();
-        //        return RedirectToAction(nameof(Index));
-        //    }
-        //    return View(user);
-        //}
 
         public IActionResult Error()
         {
@@ -58,11 +40,6 @@ namespace Auth0UserProfileDisplayStarterKit.Controllers
                 UserContactEmail = u.Email
             }).ToList();
             return Json(renderedUsers);
-        }
-
-        public async Task OnGet(CancellationToken cancellationToken)
-        {
-            Users = await _userService.GetUsersAsync(new GetUsersRequest(), new PaginationInfo(), cancellationToken);
         }
     }
 }

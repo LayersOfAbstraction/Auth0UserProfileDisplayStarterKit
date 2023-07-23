@@ -1,12 +1,7 @@
 ﻿using System;
 
-<<<<<<< Updated upstream:Models/AccessTokenCache.cs
 namespace Auth0UserProfileDisplayStarterKit.Models
 { 
-=======
-namespace Auth0UserProfileDisplayStarterKit.ViewModels
-{
->>>>>>> Stashed changes:ViewModels/AccessTokenCache.cs
     internal partial class AccessTokenCache
     {
         public string Id { get; set; }
