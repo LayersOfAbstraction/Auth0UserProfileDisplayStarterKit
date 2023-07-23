@@ -28,7 +28,6 @@ namespace Auth0UserProfileDisplayStarterKit.Controllers
             return View();
         }
 
-<<<<<<< HEAD
         // POST: User/Create        
         //[HttpPost]
         //[ValidateAntiForgeryToken]
@@ -43,8 +42,6 @@ namespace Auth0UserProfileDisplayStarterKit.Controllers
         //    return View(user);
         //}
 
-=======
->>>>>>> dc1a04facd39b34a5b7855b187fa21c7cb7e68b7
         public IActionResult Error()
         {
             return View();
