@@ -3,10 +3,10 @@
     "Auth0UserProfileDisplayStarterKit": {
       "commandName": "Project",
       "launchBrowser": true,
+      "applicationUrl": "https://localhost:50348;http://localhost:50349",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
-      },
-      "applicationUrl": "https://localhost:50348;http://localhost:50349"
+      }
     }
   }
 }
