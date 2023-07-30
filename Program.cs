@@ -3,20 +3,9 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Auth0UserProfileDisplayStarterKit.Support;
 using Example.Auth0.AuthenticationApi.AccessTokenManagement;
-using Microsoft.Extensions.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
-
-builder.Services.AddDbContext<TeamContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-builder.Services.AddDistributedSqlServerCache(options =>
-{
-    options.ConnectionString = builder.Configuration.GetConnectionString("CacheConnectionString");
-    options.SchemaName = "dbo";
-    options.TableName = "CacheTable";
-});
 
 
 //To use MVC we have to explicitly declare we are using it. Doing so will prevent a System.InvalidOperationException.
@@ -26,9 +15,6 @@ builder.Services.AddAuth0WebAppAuthentication(options =>
     options.Domain = builder.Configuration["Auth0:Domain"];
     options.ClientId = builder.Configuration["Auth0:ClientId"];
 });
-
-// Configure the HTTP request pipeline.
-builder.Services.ConfigureSameSiteNoneCookies();
 
 // Add the Auth0 HttpClientManagementConnection.
 builder.Services.AddSingleton<IManagementConnection, HttpClientManagementConnection>();

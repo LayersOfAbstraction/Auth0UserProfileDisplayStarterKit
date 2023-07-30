@@ -49,7 +49,6 @@
         [Column("UserCountry")]
         public string UserCountry { get; set; }
 
-
         [Phone()]
         [Display(Name = "Mobile Number")]
         [Column("UserMobileNumber")]
