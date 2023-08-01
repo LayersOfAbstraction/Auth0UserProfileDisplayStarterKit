@@ -9,18 +9,11 @@
         public int ID { get; set; }
 
         [Required]
-        [StringLength(20, MinimumLength = 2, ErrorMessage = "* First Name be between 2 to 20 characters.")]
+        [StringLength(20, MinimumLength = 2, ErrorMessage = "* First Name be between 2 to 40 characters.")]
         [DataType(DataType.Text)]
-        [Display(Name = "First Name")]
-        [Column("UserFirstName")]
-        public string UserFirstName { get; set; }
-
-        [Required]
-        [StringLength(30, MinimumLength = 2, ErrorMessage = "* Last Name be between 2 to 30 characters.")]
-        [DataType(DataType.Text)]
-        [Display(Name = "Last Name")]
-        [Column("UserLastName")]
-        public string UserLastName { get; set; }
+        [Display(Name = "Full Name")]
+        [Column("UserFullname")]
+        public string UserFullName { get; set; }
 
         [Required]
         [StringLength(30, MinimumLength = 3, ErrorMessage = "Email address must be between 3 to 30 characters.")]
@@ -63,12 +56,5 @@
         [Display(Name = "State")]
         [Column("UserState")]
         public string UserState { get; set; }
-
-        [Required]
-        [StringLength(20, MinimumLength = 2, ErrorMessage = "* First Name be between 2 to 40 characters.")]
-        [DataType(DataType.Text)]
-        [Display(Name = "Full Name")]
-        [Column("UserFullname")]
-        public string UserFullName { get; set; }
     }
 }
