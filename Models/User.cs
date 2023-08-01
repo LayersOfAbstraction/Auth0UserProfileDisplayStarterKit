@@ -1,4 +1,4 @@
-﻿namespace Auth0UserProfileDisplayStarterKit.ViewModels
+﻿namespace Auth0UserProfileDisplayStarterKit.Models
 {
     /// <summary>
     /// The data annotations in this class are arbitary 

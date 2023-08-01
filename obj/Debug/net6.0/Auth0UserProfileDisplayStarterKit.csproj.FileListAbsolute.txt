@@ -46,3 +46,5 @@ E:\OneDrive\Work\ProgrammingExperiments\ASP.NET\Auth0UserProfileDisplayStarterKi
 E:\OneDrive\Work\ProgrammingExperiments\ASP.NET\Auth0UserProfileDisplayStarterKit\Auth0UserProfileDisplayStarterKit\obj\Debug\net6.0\ref\Auth0UserProfileDisplayStarterKit.dll
 E:\OneDrive\Work\ProgrammingExperiments\ASP.NET\Auth0UserProfileDisplayStarterKit\Auth0UserProfileDisplayStarterKit\obj\Debug\net6.0\Auth0UserProfileDisplayStarterKit.RazorAssemblyInfo.cache
 E:\OneDrive\Work\ProgrammingExperiments\ASP.NET\Auth0UserProfileDisplayStarterKit\Auth0UserProfileDisplayStarterKit\obj\Debug\net6.0\Auth0UserProfileDisplayStarterKit.RazorAssemblyInfo.cs
+E:\OneDrive\Work\ProgrammingExperiments\ASP.NET\Auth0UserProfileDisplayStarterKit\Auth0UserProfileDisplayStarterKit\bin\Debug\net6.0\Auth0UserProfileDisplayStarterKit.staticwebassets.runtime.json
+E:\OneDrive\Work\ProgrammingExperiments\ASP.NET\Auth0UserProfileDisplayStarterKit\Auth0UserProfileDisplayStarterKit\bin\Debug\net6.0\web.config

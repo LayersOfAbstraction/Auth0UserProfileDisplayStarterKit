@@ -35,7 +35,7 @@ namespace Auth0UserProfileDisplayStarterKit.Controllers
         {
             //Get new token using Auth0ManagementApi with IUserService to interface with Identity Model library.
             var allUsers = await _userService.GetUsersAsync(new GetUsersRequest(), new PaginationInfo(), cancellationToken);
-            var renderedUsers = allUsers.Select(u => new Auth0UserProfileDisplayStarterKit.ViewModels.User
+            var renderedUsers = allUsers.Select(u => new Auth0UserProfileDisplayStarterKit.Models.User
             {
                 UserFirstName = u.FullName.Contains(' ') ? u.FullName.Split(' ')[0] : "no space",
                 UserLastName = u.FullName.Contains(' ') ? u.FullName.Split(' ')[1] : "no space",

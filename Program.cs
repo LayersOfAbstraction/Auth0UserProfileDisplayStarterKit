@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Example.Auth0.AuthenticationApi.AccessTokenManagement;
+using Auth0UserProfileDisplayStarterKit.Support;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,7 +16,7 @@ builder.Services.AddAuth0WebAppAuthentication(options =>
     options.Domain = builder.Configuration["Auth0:Domain"];
     options.ClientId = builder.Configuration["Auth0:ClientId"];
 });
-
+builder.Services.ConfigureSameSiteNoneCookies();
 // Add the Auth0 HttpClientManagementConnection.
 builder.Services.AddSingleton<IManagementConnection, HttpClientManagementConnection>();
 // Add JWT renewal references  
