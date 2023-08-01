@@ -16,10 +16,7 @@
     <thead>
         <tr>
             <th>
-                First name
-            </th>
-            <th>
-                Last name
+                Full name
             </th>
             <th>
                 Email
@@ -37,15 +34,15 @@
         <form asp-action="Create">
             <div asp-validation-summary="All" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="UserFirstName" class="control-label"></label>
-                <input id="UFirstNameInput" readonly asp-for="UserFirstName" class="form-control" />
-                <span asp-validation-for="UserFirstName" class="text-danger"></span>
+                <label asp-for="UserFullName" class="control-label"></label>
+                <input id="U_UserFullName" readonly asp-for="UserFullName" class="form-control" />
+                <span asp-validation-for="UserFullName" class="text-danger"></span>
             </div>
-            <div class="form-group">
+@*            <div class="form-group">
                 <label asp-for="UserLastName" class="control-label"></label>
                 <input id="ULastNameInput" readonly asp-for="UserLastName" class="form-control" />
                 <span asp-validation-for="UserLastName" class="text-danger"></span>
-            </div>
+            </div>*@
             <div class="form-group">
                 <label asp-for="UserContactEmail" class="control-label"></label>
                 <input id="UEmailInput" readonly asp-for="UserContactEmail" class="form-control" />
@@ -101,8 +98,7 @@
                 }
             },
             "columns": [
-                { "data": "userFirstName" },
-                { "data": "userLastName" },
+                { "data": "userFullName" },
                 { "data": "userContactEmail" }
             ]
         });
@@ -122,8 +118,7 @@
 
                 //Get ID of table and some property.
                 var table = document.querySelector('#auth0UsersTable');
-                var firstName = document.querySelector('#UFirstNameInput');
-                var lastName = document.querySelector('#ULastNameInput');
+                var fullName = document.querySelector('#U_UserFullName');
                 var email = document.querySelector('#UEmailInput');
 
                 //Add listener for table click event.
@@ -138,9 +133,8 @@
                         data.push(td.innerHTML);
                     }
 
-                    firstName.value = data[0];
-                    lastName.value = data[1];
-                    email.value = data[2];
+                    fullName.value = data[0];
+                    email.value = data[1];
                 }
             }
         });

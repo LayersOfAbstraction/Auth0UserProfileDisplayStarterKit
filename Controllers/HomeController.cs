@@ -37,8 +37,7 @@ namespace Auth0UserProfileDisplayStarterKit.Controllers
             var allUsers = await _userService.GetUsersAsync(new GetUsersRequest(), new PaginationInfo(), cancellationToken);
             var renderedUsers = allUsers.Select(u => new Auth0UserProfileDisplayStarterKit.Models.User
             {
-                UserFirstName = u.FullName.Contains(' ') ? u.FullName.Split(' ')[0] : "no space",
-                UserLastName = u.FullName.Contains(' ') ? u.FullName.Split(' ')[1] : "no space",
+                UserFullName = u.FullName,
                 UserContactEmail = u.Email
             }).ToList();
             return Json(renderedUsers);

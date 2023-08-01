@@ -64,6 +64,11 @@
         [Column("UserState")]
         public string UserState { get; set; }
 
-        public string UserFullname => string.Format("{0} {1}", UserFirstName, UserLastName);
+        [Required]
+        [StringLength(20, MinimumLength = 2, ErrorMessage = "* First Name be between 2 to 40 characters.")]
+        [DataType(DataType.Text)]
+        [Display(Name = "Full Name")]
+        [Column("UserFullname")]
+        public string UserFullName { get; set; }
     }
 }
