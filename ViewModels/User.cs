@@ -1,5 +1,9 @@
 ﻿namespace Auth0UserProfileDisplayStarterKit.ViewModels
 {
+    /// <summary>
+    /// The data annotations in this class are arbitary 
+    /// and are not required. 
+    /// </summary>
     public class User
     {
         public int ID { get; set; }
